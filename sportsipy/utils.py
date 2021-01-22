@@ -216,6 +216,8 @@ def _parse_field(parsing_scheme, html_data, field, index=0, strip=False,
     # Default to returning the first element. Optionally return another element
     # if multiple fields have the same tag attribute.
     try:
+        while "OT" in items[index] and index < len(items) - 1:
+            index += 1
         return items[index]
     except IndexError:
         if secondary_index:
