@@ -65,6 +65,7 @@ SCHEDULE_SCHEME = {
 }
 
 BOXSCORE_SCHEME = {
+    'game_sections': 'div[class="filter switcher"]',
     'date': 'div[class="scorebox_meta"]',
     'location': 'div[class="scorebox_meta"]',
     'away_name': 'a[itemprop="name"]:first',
