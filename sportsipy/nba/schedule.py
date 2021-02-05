@@ -5,15 +5,15 @@ from .constants import (SCHEDULE_SCHEME,
                         SCHEDULE_URL)
 from datetime import datetime
 from pyquery import PyQuery as pq
-from sportsipy import utils
-from sportsipy.constants import (WIN,
+from .. import utils
+from ..constants import (WIN,
                                  LOSS,
                                  HOME,
                                  AWAY,
                                  NEUTRAL,
                                  REGULAR_SEASON,
                                  CONFERENCE_TOURNAMENT)
-from sportsipy.nba.boxscore import Boxscore
+from ..nba.boxscore import Boxscore
 from urllib.error import HTTPError
 
 

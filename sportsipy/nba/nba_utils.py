@@ -1,6 +1,6 @@
 from .constants import PARSING_SCHEME, SEASON_PAGE_URL
 from pyquery import PyQuery as pq
-from sportsipy import utils
+from .. import utils
 from urllib.error import HTTPError
 
 
