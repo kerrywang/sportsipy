@@ -633,6 +633,8 @@ class Boxscore:
         # class instance should just be empty.
         if not boxscore:
             return
+        num_section = [i.text() for i in boxscore(BOXSCORE_SCHEME["game_sections"]).items()]
+        total_section = len(num_section[0].split('\n')) # include Q1 Q2 H1 Q3 Q4 H2 (OT1 OT2)
 
         for field in self.__dict__:
             # Remove the '_' from the name
@@ -660,6 +662,7 @@ class Boxscore:
             secondary_index = None
             if short_field in BOXSCORE_ELEMENT_INDEX.keys():
                 index = BOXSCORE_ELEMENT_INDEX[short_field]
+                index = index if index != 7 else max(index, total_section) # if index = -1 we are getting points otherwise use num section
                 secondary_index = 1
             if short_field == 'home_record':
                 strip = True
@@ -1328,6 +1331,8 @@ class Boxscore:
                 float(self.home_two_point_field_goal_attempts)
         except TypeError:
             result = None
+        except ZeroDivisionError:
+            raise ZeroDivisionError("Zero Division Error Occur at: {} on {}".format(self._uri, self.date))
         else:
             result = round(float(result), 3)
         return result
